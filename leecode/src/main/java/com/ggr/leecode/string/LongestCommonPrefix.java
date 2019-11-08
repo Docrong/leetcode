@@ -29,9 +29,10 @@ public class LongestCommonPrefix {
 
     static public String longestCommonPrefix(String[] strs) {
         StringBuffer sb = new StringBuffer();
-        if (strs.length == 1)
+        if (strs.length == 1) {
+
             return strs[0];
-        else if (strs.length > 1) {
+        } else if (strs.length > 1) {
             if (strs[0].equals("")) {
                 return "";
             }

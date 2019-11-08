@@ -2289,8 +2289,10 @@ public class StaticMethod {
         int ret = 0;
         Date date = new Date();
         ret = new Long(date.getTime()).intValue();
-        if (ret < 0)
+        if (ret < 0) {
+
             ret = -ret;
+        }
         return ret;
     }
 
@@ -2312,10 +2314,14 @@ public class StaticMethod {
         min = (totalsecond - hour * 60 * 60) / 60;
         minStr = String.valueOf(min);
         sec = totalsecond - min * 60 - hour * 60 * 60;
-        if (min == 0)
+        if (min == 0) {
+
             minStr = "00";
-        if (hour == 0)
+        }
+        if (hour == 0) {
+
             hourStr = "00";
+        }
         return hourStr + ":" + minStr + ":" + sec;
     }
 
@@ -2454,13 +2460,19 @@ public class StaticMethod {
     public static int getMonthLastDay(int year, int month) {
 
         if (month == 2) {
-            if (year % 4 == 0)
+            if (year % 4 == 0) {
+
                 return 29;
-            else
+            } else {
                 return 28;
-        } else if (month == 4 || month == 6 || month == 9 || month == 11)
+            }
+        } else if (month == 4 || month == 6 || month == 9 || month == 11){
             return 30;
-        else
+
+        }
+        else{
+
+        }
             return 31;
 
     }
@@ -2780,7 +2792,7 @@ public class StaticMethod {
     /**
      * 手机号验证
      *
-     * @param str
+     * @param phone
      * @return 验证通过返回true
      */
     public static boolean isPhoneNumber(String phone) {
