@@ -1,8 +1,6 @@
 package com.ggr.leecode.hash;
 
 
-import com.ggr.leecode.model.ListNode;
-
 /**
  * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
  * <p>
@@ -26,43 +24,56 @@ public class 两个链表转数字之和 {
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
 
-        addTwoNumbers(l1, l2);
+        ListNode t=addTwoNumbers(l1, l2);
+        System.out.println(t.val);
+        System.out.println(t.next.val);
+        System.out.println(t.next.next.val);
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result = l1;
-        //两链表各元素相加
+        ListNode result = null;
+        String str1="";
+        String str2="";
+        while (l1 != null) {
+            str1+=String.valueOf(l1.val);
+            l1=l1.next;
+        }
         while (l2 != null) {
-            l1.val = l1.val + l2.val;
-            l2 = l2.next;
-            if (l1.next == null) {
-                l1.next = new ListNode(0);
-            }
-            l1 = l1.next;
+            str2+=String.valueOf(l2.val);
+            l2=l2.next;
         }
-        //判断每个元素是否大于10
-        l1 = result;
-        while (l1.next != null) {
-            if (l1.val > 9) {
-                l1.next.val = l1.next.val + l1.val / 10;
-                l1.val = l1.val % 10;
-            }
-            if (l1.next.val == 0 && l1.next.next == null) {
-                l1.next = null;
-            } else {
-                l1 = l1.next;
-            }
-        }
-        //判断最后一个元素是否大于10
-        if (l1.val > 9) {
-            l1.next = new ListNode(0);
-            l1.next.val = l1.next.val + l1.val / 10;
-            l1.val = l1.val % 10;
-        }
-        System.out.println(result.val);
-        System.out.println(result.next.val);
+        String total=String.valueOf(Integer.valueOf(str1)+Integer.valueOf(str2));
+        System.out.println(total);
+        char[] chararrs=total.toCharArray();
+        result = new ListNode();
+        result.next=new ListNode(chararrs[1]);
+        result.next.next = new ListNode(chararrs[2]);
+
         return result;
     }
+    static class ListNode{
+        int val;
+        ListNode next;
 
+        public ListNode(int val) {
+            this.val = val;
+        }
+
+        public int getVal() {
+            return val;
+        }
+
+        public void setVal(int val) {
+            this.val = val;
+        }
+
+        public ListNode getNext() {
+            return next;
+        }
+
+        public void setNext(ListNode next) {
+            this.next = next;
+        }
+    }
 }
 
