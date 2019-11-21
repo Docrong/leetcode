@@ -45,7 +45,7 @@ public class 两个链表转数字之和 {
         String total=String.valueOf(Integer.valueOf(str1)+Integer.valueOf(str2));
         System.out.println(total);
         char[] chararrs=total.toCharArray();
-        result = new ListNode();
+//        result = new ListNode();
         result.next=new ListNode(chararrs[1]);
         result.next.next = new ListNode(chararrs[2]);
 
