@@ -24,34 +24,46 @@ public class 两个链表转数字之和 {
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
 
-        ListNode t=addTwoNumbers(l1, l2);
-        System.out.println(t.val);
-        System.out.println(t.next.val);
-        System.out.println(t.next.next.val);
+        ListNode t = addTwoNumbers(l1, l2);
+
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result = null;
-        String str1="";
-        String str2="";
+        String str1 = "";
+        String str2 = "";
         while (l1 != null) {
-            str1+=String.valueOf(l1.val);
-            l1=l1.next;
+            str1 += String.valueOf(l1.val);
+            l1 = l1.next;
         }
         while (l2 != null) {
-            str2+=String.valueOf(l2.val);
-            l2=l2.next;
+            str2 += String.valueOf(l2.val);
+            l2 = l2.next;
         }
-        String total=String.valueOf(Integer.valueOf(str1)+Integer.valueOf(str2));
-        System.out.println(total);
-        char[] chararrs=total.toCharArray();
-        result = new ListNode();
-        result.next=new ListNode(chararrs[1]);
-        result.next.next = new ListNode(chararrs[2]);
+        String total = String.valueOf(Integer.parseInt(str1) + Integer.parseInt(str2));
+        char[] chararrs = total.toCharArray();
 
+        ListNode curr=new ListNode(0);
+        for (int i = 0; i < chararrs.length; i++) {
+            curr.setVal(Integer.parseInt(String.valueOf(chararrs[i])));
+        }
+
+        result = new ListNode(Integer.parseInt(String.valueOf(chararrs[0])));
+        result.next = new ListNode(Integer.parseInt(String.valueOf(chararrs[1])));
+        result.next.next = new ListNode(Integer.parseInt(String.valueOf(chararrs[2])));
+
+        for (int i = 0; i < chararrs.length; i++) {
+
+        }
+
+        System.out.println(result.val);
         return result;
     }
-    static class ListNode{
+
+    /**
+     * ListNode
+     */
+    static class ListNode {
         int val;
         ListNode next;
 
