@@ -41,11 +41,18 @@ public class 两数相除 {
 			return Integer.MIN_VALUE;
 		}
 		boolean bo = (dividend ^ divisor) > 0;
-		long d = Math.abs(dividend);
-		long t = Math.abs(divisor);
+		long d = Math.abs((long)dividend);
+		long t = Math.abs((long) divisor);
 		int result = 0;
 
-		return 0;
+		for (int i = 2; i >=0 ; i--) {
+			if (d >> i > t) {
+				result+= (1<<i);//位移运算
+				d -= (d << i);
+			}
+		}
+
+		return bo?result:-result;
 	}
 
 

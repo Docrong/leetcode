@@ -4,12 +4,14 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import javax.persistence.Cacheable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Cacheable
 public class Dom4jSAXReaderXml {
     public static void main(String[] args) {
 
